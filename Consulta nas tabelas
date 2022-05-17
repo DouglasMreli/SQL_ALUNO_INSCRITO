@@ -1,0 +1,23 @@
+/* Questao 1 */
+SELECT cursou.cod_disciplina, disciplina.nome, cursou.semestre, cursou.nota
+	FROM cursou 
+	INNER JOIN disciplina ON cursou.cod_disciplina = disciplina.cod 
+	WHERE matr_aluno = 5;
+    
+/* Questao 2 */
+SELECT aluno.matr, aluno.nome, avg(cursou.nota) as media
+	FROM aluno
+    INNER JOIN CURSOU ON aluno.matr = cursou.matr_aluno
+    group by aluno.matr;
+
+/* Questao 3 */
+SELECT cod_turma, COUNT(matr_aluno) as alunos_inscritos
+	FROM inscrito
+    GROUP BY cod_turma
+    ORDER BY alunos_inscritos;
+    
+/* Questao 4 */
+SELECT aluno.nome , aluno.matr
+	FROM aluno
+	RIGHT JOIN inscrito ON aluno.matr = inscrito.matr_aluno
+    group by aluno.matr
